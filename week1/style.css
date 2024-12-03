@@ -1,0 +1,188 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(249, 249, 181);
+}
+.nav .memu{
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.nav .memu a{
+    text-decoration: none;
+    color: black;
+}
+.nav .btns button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    background-color: rgb(6, 6, 6);
+}
+.btns button a{
+    text-decoration: none;
+    color: white;   
+}
+
+.btns button:hover{
+    transform: scale(0.9);
+    
+}
+button{
+    cursor: pointer;
+    color: white;
+    
+}
+.roundimage{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px;
+}
+.image{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+.image1 img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.image2 img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.image3 img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+
+
+#continer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.card{
+    width: 300px;
+    height: 350px;
+    margin: 20px;
+    box-shadow:  25px 0 20px -20px rgba(0, 0, 0, 0.45);
+    text-align: center; 
+}
+.card:hover{
+    transform: scale(1.1);
+}
+.card img{
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+   
+}
+
+
+#main{
+    display: flex;
+    justify-content: space-evenly;
+}
+.box{
+    width: 200px;
+    height: 250px;
+    margin: 20px;
+    border: 10px solid;
+    text-align: center;
+    padding:20px;  
+    
+}
+.box img{
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+
+
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 50px;
+    background-color: rgb(105, 102, 102);
+    color: white;
+}
+.f1{
+    width: 45%;
+    text-align: center;
+}
+.f2{
+    width: 55%;
+    text-align: center;
+}
+.footer2{
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(105, 102, 102);
+    color: white;
+}
+
+
+.contact{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+form{
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-row-gap: 10px;
+    padding: 10px;
+}
+.field{
+    grid-column: span 2;
+    display: grid;
+}
+.field1{
+    grid-column: span 1;
+    display: grid;
+}
+form input{
+    width: 300px;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.login .loginbox{
+    background-color: rgb(249, 249, 181);
+    padding: 30px;
+    border-radius: 10px;
+}
+.login h2{
+    text-align: center;
+}
+.login button{
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: black;
+}
+.loginbox p{
+    text-align: end;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
