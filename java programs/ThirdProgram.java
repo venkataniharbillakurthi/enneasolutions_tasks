@@ -1,36 +1,36 @@
+import java.util.Stack;
+
 public class ThirdProgram {
     static String simplify(String path) {
-        
+        Stack<String> stack = new Stack<>();
+
         String[] components = path.split("/");
-        String[] stack = new String[components.length];
-        int stackPointer = 0; 
 
         for (String dir : components) {
             if (dir.equals("") || dir.equals(".")) {
-                
                 continue;
             } else if (dir.equals("..")) {
-                
-                if (stackPointer > 0) {
-                    stackPointer--;
+
+                if (!stack.isEmpty()) {
+                    stack.pop();
                 }
             } else {
-              
-                stack[stackPointer] = dir;
-                stackPointer++;
+
+                stack.push(dir);
             }
         }
 
+
         StringBuilder result = new StringBuilder();
-        for (int i = 0; i < stackPointer; i++) {
-            result.append("/").append(stack[i]);
+        for (String dir : stack) {
+            result.append("/").append(dir);
         }
+
 
         return result.length() > 0 ? result.toString() : "/";
     }
 
     public static void main(String[] args) {
- 
         String str = "/a/./b/../../c/";
         String res = simplify(str);
         System.out.print(res);
