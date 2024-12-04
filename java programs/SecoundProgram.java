@@ -24,5 +24,6 @@ public class SecoundProgram {
 
 }
 
-
+// The Worst Time Complexity is Olog(n)
+// The Space Compexity is O(1)
    
