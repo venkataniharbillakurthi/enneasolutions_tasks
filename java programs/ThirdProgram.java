@@ -36,3 +36,6 @@ public class ThirdProgram {
         System.out.print(res);
     }
 }
+
+// The Worst Time Complexity is O(n)
+// The Space Complexity is O(n)
