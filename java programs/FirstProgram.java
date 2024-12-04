@@ -24,5 +24,5 @@ public class FirstProgram {
 }
 
 
-//the worst time complexity  ---- Olog(n) 
-//the Space complexity -- O(1)
+//The Worst Time Complexity  is Olog(n) 
+//The Space Complexity -- O(1)
