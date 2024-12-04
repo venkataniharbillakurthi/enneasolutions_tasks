@@ -22,3 +22,7 @@ public class FirstProgram {
         return sqrtroot;
     }
 }
+
+
+//the worst time complexity  ---- Olog(n) 
+//the Space complexity -- O(1)
