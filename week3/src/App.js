@@ -7,7 +7,7 @@ import Products from './pages/products';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import './script';
+
 function App() {
   return (
     <div>
