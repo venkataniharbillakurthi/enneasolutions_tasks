@@ -1,69 +1,42 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 
 function Products() {
-    async function fetchdata() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
       try {
-          let response = await fetch("https://fakestoreapi.com/products");
-          let data = await response.json();
-          let referElement = document.getElementById("container"); 
-          if (!referElement) {
-              console.error("Element with id 'container' not found");
-              return;
-          }
-          data.forEach(product => {
-            
-              const card = document.createElement("div");
-              card.className = "card";
-
-              const img = document.createElement("img");
-              img.src = product.image;
-              img.alt = "Product image";
-
-              const title = document.createElement("h2");
-              title.textContent = product.title.slice(0, 50);
-
-              const description = document.createElement("p");
-              description.textContent = product.description.slice(0, 50);
-
-              const btns = document.createElement("div");
-              btns.className = "btns";
-
-              const priceButton = document.createElement("button");
-              priceButton.className = "price";
-              priceButton.textContent = `$${product.price}/-`;
-
-              const ratingButton = document.createElement("button");
-              ratingButton.className = "rating";
-              const starIcon = document.createElement("i");
-              starIcon.className = "fa-solid fa-star";
-              ratingButton.appendChild(starIcon);
-              ratingButton.appendChild(document.createTextNode(product.rating.rate));
-
-              btns.appendChild(priceButton);
-              btns.appendChild(ratingButton);
-
-              card.appendChild(img);
-              card.appendChild(title);
-              card.appendChild(description);
-              card.appendChild(btns);
-
-              referElement.appendChild(card);
-          });
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data);
       } catch (error) {
-          console.error("Error fetching product data:", error);
+        console.error("Error fetching product data:", error);
       }
-  }
-  fetchdata();
+    }
+    fetchData();
+  }, []);
+
   return (
     <div>
-   
-      <h2 style={{ margin: '40px 20px' }}>Products</h2> 
-      <div  id="container">
-       
+      <h2 style={{ margin: '40px 20px' }}>Products</h2>
+      <div id="container" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+        {products.map((product) => (
+          <div key={product.id} className="card" style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px', width: '250px', textAlign: 'center' }}>
+            <img src={product.image} alt="Product" style={{ width: '100%', height: '150px', objectFit: 'contain' }} />
+            <h2 style={{ fontSize: '16px', margin: '10px 0' }}>{product.title.slice(0, 50)}</h2>
+            <p style={{ fontSize: '14px', color: '#555' }}>{product.description.slice(0, 50)}</p>
+            <div className="btns" style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+              <button className="price" style={{ padding: '5px 10px', background: '#007BFF', color: '#fff', border: 'none', borderRadius: '4px' }}>
+                ${product.price}/-
+              </button>
+              <button className="rating" style={{ padding: '5px 10px', background: '#FFC107', color: '#fff', border: 'none', borderRadius: '4px' }}>
+                <i className="fa-solid fa-star" style={{ marginRight: '5px' }}></i>
+                {product.rating.rate}
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
-
-   
     </div>
   );
 }
