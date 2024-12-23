@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useStateContext } from '../Context'; 
-import { useDate } from '../Utils/useDate';
-import sun from '../assets/icons/sun.png';
-import cloud from '../assets/icons/cloud.png';
-import fog from '../assets/icons/fog.png';
-import rain from '../assets/icons/rain.png';
-import snow from '../assets/icons/snow.png';
-import storm from '../assets/icons/storm.png';
-import wind from '../assets/icons/windy.png';
-import '../index.css';
+import React, { useEffect, useState } from "react";
+import { useStateContext } from "../Context";
+import { useDate } from "../Utils/useDate";
+import cloud from "../assets/icons/cloud.png";
+import fog from "../assets/icons/fog.png";
+import rain from "../assets/icons/rain.png";
+import snow from "../assets/icons/snow.png";
+import storm from "../assets/icons/storm.png";
+import sun from "../assets/icons/sun.png";
+import wind from "../assets/icons/windy.png";
+import "../index.css";
 
 const WeatherCard = ({
   temperature,
@@ -18,32 +18,48 @@ const WeatherCard = ({
   heatIndex,
   iconString,
   conditions,
+  setPlace,
 }) => {
   const [icon, setIcon] = useState(sun);
   const { time } = useDate();
-  const { isLoading, thisLocation } = useStateContext(); 
+  const { isLoading, isError, error, thisLocation } = useStateContext();
 
   useEffect(() => {
     if (iconString) {
-      if (iconString.toLowerCase().includes('cloud')) {
+      if (iconString.toLowerCase().includes("cloud")) {
         setIcon(cloud);
-      } else if (iconString.toLowerCase().includes('rain')) {
+      } else if (iconString.toLowerCase().includes("rain")) {
         setIcon(rain);
-      } else if (iconString.toLowerCase().includes('clear')) {
+      } else if (iconString.toLowerCase().includes("clear")) {
         setIcon(sun);
-      } else if (iconString.toLowerCase().includes('thunder')) {
+      } else if (iconString.toLowerCase().includes("thunder")) {
         setIcon(storm);
-      } else if (iconString.toLowerCase().includes('fog')) {
+      } else if (iconString.toLowerCase().includes("fog")) {
         setIcon(fog);
-      } else if (iconString.toLowerCase().includes('snow')) {
+      } else if (iconString.toLowerCase().includes("snow")) {
         setIcon(snow);
-      } else if (iconString.toLowerCase().includes('wind')) {
+      } else if (iconString.toLowerCase().includes("wind")) {
         setIcon(wind);
       }
     }
   }, [iconString]);
 
-  
+  if (isError) {
+    return (
+      <div className="w-[22rem] min-w-[22rem] h-[30rem] glassCard flex flex-col justify-center items-center">
+        <p className="text-xl font-semibold text-red-600">
+          Error: {error.message || "Failed to fetch weather data."}
+        </p>
+        <button
+          onClick={() => setPlace("Rajahmundry")}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Invalid Location!..
+        </button>
+      </div>
+    );
+  }
+
   if (isLoading && thisLocation === place) {
     return (
       <div className="w-[22rem] min-w-[22rem] h-[30rem] glassCard flex justify-center items-center">
@@ -73,7 +89,7 @@ const WeatherCard = ({
       </div>
       <div className="w-full p-3 mt-4 flex justify-between items-center">
         <p className="font-semibold text-lg">Heat Index</p>
-        <p className="text-lg">{heatIndex ? heatIndex : 'N/A'}</p>
+        <p className="text-lg">{heatIndex ? heatIndex : "N/A"}</p>
       </div>
       <hr className="bg-slate-600" />
       <div className="w-full p-4 flex justify-center items-center text-3xl font-semibold">

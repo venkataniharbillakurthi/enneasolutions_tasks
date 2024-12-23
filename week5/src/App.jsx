@@ -23,6 +23,7 @@ function WeatherApp() {
           heatIndex={weather?.heatindex}
           iconString={weather?.conditions}
           conditions={weather?.conditions}
+          setPlace={setPlace}
         />
         <div className="flex justify-center gap-8 flex-wrap w-[60%]">
           {values?.slice(1, 7).length > 0 ? (

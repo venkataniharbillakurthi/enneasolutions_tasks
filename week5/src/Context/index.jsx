@@ -39,45 +39,22 @@ export const StateContextProvider = ({ children }) => {
 
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['forecast', place],
-        queryFn: async () => {
-            try {
-                return await fetchWeather(place);
-            } catch (err) {
-                throw new Error(err.message); 
-            }
-        },
+        queryFn: () => fetchWeather(place),
         enabled: !!place,
     });
-
-    
-
-    if (isError) {
-        return (
-            <div className="w-full h-screen flex justify-center items-center">
-                <div>
-                    <p>Error: {error.message}</p>
-                    <button
-                        onClick={() => setPlace('Rajahmundry')} 
-                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                    >
-                        Invalid Location!..
-                    </button>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <StateContext.Provider
             value={{
-                weather: data?.values[0], 
+                weather: data?.values[0],
                 setPlace,
-                values: data?.values, 
-                thisLocation: data?.address, 
+                values: data?.values,
+                thisLocation: data?.address,
                 isLoading,
                 place,
                 isError,
                 error,
+                setPlace,
             }}
         >
             {children}
@@ -86,4 +63,3 @@ export const StateContextProvider = ({ children }) => {
 };
 
 export const useStateContext = () => useContext(StateContext);
-

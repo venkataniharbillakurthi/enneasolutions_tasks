@@ -4,19 +4,25 @@ import { useNavigate } from "react-router-dom";
 
 const Nav = ({ input, setInput, setPlace }) => {
   const navigate = useNavigate();
+
   const goToLandingPage = () => {
     navigate("/");
   };
+
   const submitCity = () => {
-    setPlace(input);
-    setInput('');
+    const trimmedInput = input.trim(); 
+    if (trimmedInput) {
+      setPlace(trimmedInput); 
+      setInput('');
+    } else {
+      alert('Please enter a valid city name.'); 
+    }
   };
-  
 
   return (
     <nav className="w-full p-3 flex justify-between items-center">
       <button
-        onClick={goToLandingPage} 
+        onClick={goToLandingPage}
         className="bg-blue-100 px-2 py-1 rounded-full text-lg font-semibold hover:bg-blue-600 hover:text-white"
       >
         Back
