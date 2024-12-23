@@ -1,51 +1,31 @@
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
 
 function Home() {
-    async function fetchdata1() {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchProducts() {
       try {
-          let response = await fetch("https://fakestoreapi.com/products");
-          let data = await response.json();
-          let content = '';
-          let mainElement = document.getElementById("main"); 
-          if (!mainElement) {
-              console.error("Element with id 'main' not found");
-              return;
-          }
-          data.slice(0, 8).forEach(product => {
-              content += `
-                  <div class="box">
-                      <img src="${product.image}" alt=""/>
-                      <h2>${product.title.slice(0, 20)}</h2>
-                      <p>${product.description.slice(0, 20)}</p>
-                      <div class="btns">
-                          <button class="price">$${product.price}/-</button>
-                          <button class="rating"><i class="fa-solid fa-star">${product.rating.rate}</i></button>
-                      </div>
-                  </div>
-              `;
-          });
-          mainElement.innerHTML = content;
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data.slice(0, 8));
       } catch (error) {
-          console.error("Error fetching product data:", error);
-          let containerElement = document.getElementById("container"); 
-          if (containerElement) {
-              containerElement.innerHTML = "<p>Failed to load products. Please try again later.</p>";
-          }
+        console.error("Error fetching product data:", error);
+        setError("Failed to load products. Please try again later.");
       }
-  }
-  fetchdata1();
+    }
+    fetchProducts();
+  }, []);
 
   return (
     <div>
-
-          <div className="marq">
-      <div className="scroll-text">
-        Today Special offer on T-Shirt up to 30%
+      <div className="marq">
+        <div className="scroll-text">
+          Today Special offer on T-Shirt up to 30%
+        </div>
       </div>
-    </div>
 
-      
       <h2>Product Categories</h2>
       <div className="roundimage">
         <div className="image image1">
@@ -73,10 +53,27 @@ function Home() {
 
       <h1>Recommended Products</h1>
 
-      <div id="main">
-
-      </div>
-
+      {error ? (
+        <div className="error-message">
+          <p>{error}</p>
+        </div>
+      ) : (
+        <div id="main">
+          {products.map((product) => (
+            <div className="box" key={product.id}>
+              <img src={product.image} alt={product.title} />
+              <h2>{product.title.slice(0, 20)}</h2>
+              <p>{product.description.slice(0, 20)}</p>
+              <div className="btns">
+                <button className="price">${product.price}/-</button>
+                <button className="rating">
+                  <i className="fa-solid fa-star">{product.rating.rate}</i>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -19,7 +19,7 @@ function Products() {
   return (
     <div>
       <h2 style={{ margin: '40px 20px' }}>Products</h2>
-      <div id="container" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+      <div id="container" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
         {products.map((product) => (
           <div key={product.id} className="card" style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px', width: '250px', textAlign: 'center' }}>
             <img src={product.image} alt="Product" style={{ width: '100%', height: '150px', objectFit: 'contain' }} />
