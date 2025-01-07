@@ -51,7 +51,7 @@ const BestSeller = () => {
       setLoading(true);
       try {
         const data = await fetchBestSellers();
-        setBestSeller(data.slice(0, 6));
+        setBestSeller(data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching best sellers:", error);
       } finally {
