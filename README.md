@@ -115,6 +115,15 @@ GROUP BY c.course_name;
 ### Many-to-Many: Students can enroll in multiple courses.
 
 ```
+	-- one to one 
+SELECT 
+    p.name AS professor_name,
+    d.department_name
+FROM 
+    professors p
+Join 
+    departments d ON p.department_id = d.department_id;
+
 	-- one to many
 SELECT 
     d.department_name,
