@@ -21,12 +21,11 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
-    public Todo updateTodo(Long id, Todo todo) {
+    public Todo updateTodo(Long id) {
         Todo existingTodo = todoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
         
-        existingTodo.setText(todo.getText());
-        existingTodo.setCompleted(todo.isCompleted());
+        existingTodo.setCompleted(!existingTodo.isCompleted());
         
         return todoRepository.save(existingTodo);
     }
