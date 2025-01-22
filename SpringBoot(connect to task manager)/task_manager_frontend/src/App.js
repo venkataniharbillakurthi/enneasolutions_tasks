@@ -61,16 +61,8 @@ function App() {
 
   const toggleTodo = async (id) => {
     try {
-      const todo = todos.find(t => t.id === id);
       const response = await fetch(`${API_BASE_URL}/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...todo,
-          completed: !todo.completed
-        }),
+        method: 'PUT'
       });
       const updatedTodo = await response.json();
       setTodos(todos.map(todo =>
