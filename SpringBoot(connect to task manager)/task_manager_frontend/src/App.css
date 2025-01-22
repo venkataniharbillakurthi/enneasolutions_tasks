@@ -1,0 +1,113 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('https://img.freepik.com/free-photo/flat-lay-desk-arrangement-with-copy-space_23-2148128351.jpg?t=st=1733567248~exp=1733570848~hmac=76ecec665ead86e6a8b95accea53a38a75727fdf85c28f752db4d87d73e26902&w=996');
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  padding: 10px;
+}
+
+.todo-container {
+  width: 100%;
+  max-width: 540px;
+  background: white;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
+}
+
+.todo-container h1 {
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.todo-container h1 img {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #edeef0;
+  border-radius: 30px;
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.input-container input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+}
+
+.input-container button {
+  border: none;
+  outline: none;
+  padding: 16px 50px;
+  background-color: skyblue;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 40px;
+}
+
+.todo-list li {
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.todo-list li::before {
+  content: '';
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background-image: url('../public/rectangle.png');
+  background-size: cover;
+  background-position: center;
+  top: 12px;
+  left: 8px;
+}
+
+.todo-list li.completed {
+  color: #555;
+  text-decoration: line-through;
+}
+
+.todo-list li.completed::before {
+  background-image: url('../public/correct.png');
+}
+
+.todo-list li span {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #555;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.todo-list li span:hover {
+  background: #edeef0;
+}
