@@ -4,6 +4,7 @@ import com.weather.dto.AuthRequest;
 import com.weather.dto.AuthResponse;
 import com.weather.dto.RegisterRequest;
 import com.weather.entity.User;
+import com.weather.exception.EmailAlreadyExistsException;
 import com.weather.repository.UserRepository;
 import com.weather.security.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -24,13 +25,14 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     
     public AuthResponse register(RegisterRequest request) {
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already exists");
+        String email = request.getEmail();
+        if (userRepository.existsByEmail(email)) {
+            throw new EmailAlreadyExistsException("Email already exists: " + email);
         }
         
         User user = new User();
         user.setName(request.getName());
-        user.setEmail(request.getEmail());
+        user.setEmail(email);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         
         userRepository.save(user);

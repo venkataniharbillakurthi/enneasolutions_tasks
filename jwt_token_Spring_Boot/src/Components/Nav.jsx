@@ -1,12 +1,14 @@
 import React from 'react';
 import search from '../assets/icons/search.svg';
 import { useNavigate } from "react-router-dom";
+import authService from '../services/authService';
 
 const Nav = ({ input, setInput, setPlace }) => {
   const navigate = useNavigate();
 
-  const goToLandingPage = () => {
-    navigate("/");
+  const handleLogout = () => {
+    authService.logout(); // Remove token from localStorage
+    navigate("/login"); // Redirect to login page
   };
 
   const submitCity = () => {
@@ -22,7 +24,7 @@ const Nav = ({ input, setInput, setPlace }) => {
   return (
     <nav className="w-full p-3 flex justify-between items-center">
       <button
-        onClick={goToLandingPage}
+        onClick={handleLogout}
         className="bg-blue-100 px-2 py-1 rounded-full text-lg font-semibold hover:bg-blue-600 hover:text-white"
       >
         Logout

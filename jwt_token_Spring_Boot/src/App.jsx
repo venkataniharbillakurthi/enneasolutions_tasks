@@ -7,6 +7,16 @@ import { useStateContext } from "./Context";
 import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Entry from "./Enter";
+import authService from "./services/authService";
+import Dashboard from "./Components/Dashboard/Dashboard";
+
+const ProtectedRoute = ({ children }) => {
+  const token = authService.getCurrentUser();
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 function WeatherApp() {
   const [input, setInput] = useState("");
@@ -52,11 +62,54 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/weather" element={<WeatherApp />} />
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/entry" element={<Entry />} />
+        <Route 
+          path="/login" 
+          element={
+            authService.getCurrentUser() 
+              ? <Navigate to="/entry" replace /> 
+              : <Login />
+          } 
+        />
+        <Route 
+          path="/register" 
+          element={
+            authService.getCurrentUser() 
+              ? <Navigate to="/entry" replace /> 
+              : <Register />
+          } 
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/entry"
+          element={
+            <ProtectedRoute>
+              <Entry />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/weather"
+          element={
+            <ProtectedRoute>
+              <WeatherApp />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/" 
+          element={
+            authService.getCurrentUser() 
+              ? <Navigate to="/entry" replace /> 
+              : <Navigate to="/login" replace />
+          } 
+        />
       </Routes>
     </Router>
   );

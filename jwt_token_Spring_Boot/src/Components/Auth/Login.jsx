@@ -8,6 +8,7 @@ const Login = () => {
     password: '',
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -22,14 +23,18 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setSuccess('');
     setLoading(true);
 
     try {
       const response = await authService.login(formData);
       localStorage.setItem('token', response.token);
-      navigate('/weather');
+      setSuccess('Login successful! Redirecting...');
+      setTimeout(() => {
+        navigate('/entry');
+      }, 1500);
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed. Please try again.');
+      setError(err.response?.data?.error || 'Invalid email or password. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -43,6 +48,11 @@ const Login = () => {
         {error && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
             {error}
+          </div>
+        )}
+        {success && (
+          <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+            {success}
           </div>
         )}
         <form onSubmit={handleSubmit} className="space-y-6">
