@@ -1,6 +1,7 @@
 package com.college.service;
 
 import com.college.dto.StudentDTO;
+import com.college.entity.Student;
 import com.college.dto.DepartmentDTO;
 import com.college.mapper.CollegeMapper;
 import com.college.repository.StudentRepository;
@@ -46,6 +47,13 @@ public class CollegeService {
     public Object addStudent(StudentDTO studentDTO) {
         return studentRepository.save(collegeMapper.studentDTOToStudent(studentDTO));
     }
-
-   
+    
+    public void updateStudent(Integer studentId, StudentDTO studentDTO) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+        student.setName(studentDTO.getName());
+        student.setAge(studentDTO.getAge());
+        student.setDepartment(collegeMapper.departmentDTOToDepartment(studentDTO.getDepartmentId()));
+        studentRepository.save(student);
+    }
 }

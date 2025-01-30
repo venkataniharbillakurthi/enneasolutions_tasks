@@ -34,6 +34,14 @@ public class CollegeController {
         return ResponseEntity.ok(collegeService.addStudent(studentDTO));
     }
     
-     
-    
+    @PutMapping("/students/{studentId}")
+    public ResponseEntity<String> updateStudent(@PathVariable Integer studentId, @RequestBody StudentDTO studentDTO) {
+        collegeService.updateStudent(studentId, studentDTO);
+        return ResponseEntity.ok("Student updated successfully");
+    }
 }
+
+    
+
+     
+

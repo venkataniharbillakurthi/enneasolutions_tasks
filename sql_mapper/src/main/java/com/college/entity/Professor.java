@@ -16,4 +16,5 @@ public class Professor {
     @OneToOne
     @JoinColumn(name = "department_id")
     private Department department;
+    
 }

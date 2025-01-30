@@ -1,0 +1,25 @@
+# Build artifacts
+target/
+build/
+dist/
+out/
+*.jar
+*.war
+*.ear
+*.class
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs and temp files
+logs/
+*.log
+*.tmp
+
+# Dependency directories
+.mvn/
+.gradle/

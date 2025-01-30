@@ -15,4 +15,5 @@ public class Department {
     
     @OneToOne(mappedBy = "department")
     private Professor professor;
+    
 }

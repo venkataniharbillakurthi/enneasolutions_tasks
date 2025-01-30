@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-29T13:08:08+0530",
+    date = "2025-01-29T23:11:18+0530",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 3.41.0.z20250115-2156, environment: Java 21.0.5 (Eclipse Adoptium)"
 )
 @Component
@@ -27,6 +27,7 @@ public class CollegeMapperImpl implements CollegeMapper {
         studentDTO.setDepartmentId( studentDepartmentDepartmentId( student ) );
         studentDTO.setAge( student.getAge() );
         studentDTO.setName( student.getName() );
+        studentDTO.setStudentId( student.getStudentId() );
 
         return studentDTO;
     }
@@ -59,6 +60,19 @@ public class CollegeMapperImpl implements CollegeMapper {
         student.setName( studentDTO.getName() );
 
         return student;
+    }
+
+    @Override
+    public Department departmentDTOToDepartment(Integer departmentId) {
+        if ( departmentId == null ) {
+            return null;
+        }
+
+        Department department = new Department();
+
+        department.setDepartmentId( departmentId );
+
+        return department;
     }
 
     private Integer studentDepartmentDepartmentId(Student student) {

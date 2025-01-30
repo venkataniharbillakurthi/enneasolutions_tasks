@@ -19,6 +19,8 @@ public class Student {
     @JoinColumn(name = "department_id")
     private Department department;
     
+
+    
     @ManyToMany
     @JoinTable(
         name = "student_courses",
@@ -26,4 +28,5 @@ public class Student {
         inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Course> courses;
+    
 }
