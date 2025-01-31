@@ -1,7 +1,9 @@
 package com.college.mapper;
 
+import com.college.dto.CourseDTO;
 import com.college.dto.DepartmentDTO;
 import com.college.dto.StudentDTO;
+import com.college.entity.Course;
 import com.college.entity.Department;
 import com.college.entity.Professor;
 import com.college.entity.Student;
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-31T12:55:06+0530",
+    date = "2025-01-31T14:50:34+0530",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.14 (Oracle Corporation)"
 )
 @Component
@@ -73,6 +75,25 @@ public class CollegeMapperImpl implements CollegeMapper {
         department.setDepartmentId( departmentId );
 
         return department;
+    }
+
+    @Override
+    public CourseDTO courseToCourseDTO(Course course) {
+        if ( course == null ) {
+            return null;
+        }
+
+        CourseDTO courseDTO = new CourseDTO();
+
+        if ( course.getCourseId() != null ) {
+            courseDTO.setCourseId( course.getCourseId().longValue() );
+        }
+        courseDTO.setCourseName( course.getCourseName() );
+        if ( course.getCredits() != null ) {
+            courseDTO.setCredits( String.valueOf( course.getCredits() ) );
+        }
+
+        return courseDTO;
     }
 
     private Integer studentDepartmentDepartmentId(Student student) {
