@@ -43,6 +43,7 @@ const AddStudent = () => {
                     <input style={{ padding: '10px' }} type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required /><br/>
                     <input style={{ padding: '10px' }} type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.value)} /><br/>
                     <input style={{ padding: '10px' }} type="number" placeholder="Department ID" value={departmentId} onChange={(e) => setDepartmentId(e.target.value)} /><br/>
+                    
                     <button style={{ padding: '10px' }} type="submit">Add Student</button>
                 </FormContainer>
             </form>

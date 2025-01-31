@@ -13,13 +13,15 @@ public class CollegeApplication {
         SpringApplication.run(CollegeApplication.class, args);
     }
     @Configuration
-    public class WebConfig implements WebMvcConfigurer {
+    public static class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Allow all paths
-                .allowedOrigins("http://localhost:3000") // Allow your frontend origin
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow specific methods
-                .allowCredentials(true); // Allow credentials if needed
+        registry.addMapping("/**") 
+                .allowedOrigins("http://localhost:3000")
+                 
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
+                .allowCredentials(true)
+                .exposedHeaders("x-total-pages"); 
     }
     }
 }
