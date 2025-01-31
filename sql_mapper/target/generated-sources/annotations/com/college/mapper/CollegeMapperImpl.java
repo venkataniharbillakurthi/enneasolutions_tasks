@@ -1,7 +1,9 @@
 package com.college.mapper;
 
+import com.college.dto.CourseDTO;
 import com.college.dto.DepartmentDTO;
 import com.college.dto.StudentDTO;
+import com.college.entity.Course;
 import com.college.entity.Department;
 import com.college.entity.Professor;
 import com.college.entity.Student;
@@ -10,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-31T12:55:06+0530",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.14 (Oracle Corporation)"
+    date = "2025-01-31T11:26:02+0530",
+    comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 3.41.0.z20250115-2156, environment: Java 21.0.5 (Eclipse Adoptium)"
 )
 @Component
 public class CollegeMapperImpl implements CollegeMapper {
@@ -25,9 +27,9 @@ public class CollegeMapperImpl implements CollegeMapper {
         StudentDTO studentDTO = new StudentDTO();
 
         studentDTO.setDepartmentId( studentDepartmentDepartmentId( student ) );
-        studentDTO.setStudentId( student.getStudentId() );
-        studentDTO.setName( student.getName() );
         studentDTO.setAge( student.getAge() );
+        studentDTO.setName( student.getName() );
+        studentDTO.setStudentId( student.getStudentId() );
 
         return studentDTO;
     }
@@ -56,8 +58,8 @@ public class CollegeMapperImpl implements CollegeMapper {
         Student student = new Student();
 
         student.setDepartment( studentDTOToDepartment( studentDTO ) );
-        student.setName( studentDTO.getName() );
         student.setAge( studentDTO.getAge() );
+        student.setName( studentDTO.getName() );
 
         return student;
     }
@@ -73,6 +75,25 @@ public class CollegeMapperImpl implements CollegeMapper {
         department.setDepartmentId( departmentId );
 
         return department;
+    }
+
+    @Override
+    public CourseDTO courseToCourseDTO(Course course) {
+        if ( course == null ) {
+            return null;
+        }
+
+        CourseDTO courseDTO = new CourseDTO();
+
+        if ( course.getCourseId() != null ) {
+            courseDTO.setCourseId( course.getCourseId().longValue() );
+        }
+        courseDTO.setCourseName( course.getCourseName() );
+        if ( course.getCredits() != null ) {
+            courseDTO.setCredits( String.valueOf( course.getCredits() ) );
+        }
+
+        return courseDTO;
     }
 
     private Integer studentDepartmentDepartmentId(Student student) {
