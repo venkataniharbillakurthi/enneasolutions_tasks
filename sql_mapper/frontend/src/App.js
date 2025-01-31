@@ -2,11 +2,9 @@
 import React, { useState } from 'react';
 import StudentList from './components/StudentList';
 import DepartmentList from './components/DepartmentList';
-import AddStudent from './components/AddStudent'; 
-import UpdateStudent from './components/UpdateStudent'; 
+import AddStudent from './components/AddStudent'; // New component for adding student
+import UpdateStudent from './components/UpdateStudent'; // New component for updating student
 import styled from 'styled-components';
-import Course from './components/Course';
-import CourseEnrollment from './components/CourseEnrollement';
 
 const AppHeader = styled.h1`
   color: #0d47a1; 
@@ -40,7 +38,7 @@ const ButtonContainer = styled.div`
   align-items: center; 
 `;
 const StyledButton = styled.button`
-  width: ${(props) => (props.level === 1 ? '200px' : '150px')}; 
+  width: ${(props) => (props.level === 1 ? '200px' : props.level === 2 ? '150px' :props.level === 3 ? '100px' : props.level === 4 ? '80px' : '50px')}; 
   height: 40px; 
   margin: 5px 0; 
   background-color: #0d47a1; 
@@ -60,7 +58,7 @@ const StyledButton = styled.button`
 
 
 const App = () => {
-    const [view, setView] = useState(''); 
+    const [view, setView] = useState(''); // State to manage which view to display
 
     const handleViewChange = (newView) => {
         setView(newView);
@@ -70,21 +68,16 @@ const App = () => {
         <AppContainer>
             <ButtonContainer>
                 <AppHeader>Ennea College</AppHeader>
-                <StyledButton level={1} onClick={() => handleViewChange('students')}>Students</StyledButton>
-                <StyledButton level={1} onClick={() => handleViewChange('departments')}>Departments</StyledButton>
-                <StyledButton level={1} onClick={() => handleViewChange('addStudent')}>Add Student</StyledButton>
+                <StyledButton level={4} onClick={() => handleViewChange('students')}>Students</StyledButton>
+                <StyledButton level={3} onClick={() => handleViewChange('departments')}>Departments</StyledButton>
+                <StyledButton level={2} onClick={() => handleViewChange('addStudent')}>Add Student</StyledButton>
                 <StyledButton level={1} onClick={() => handleViewChange('updateStudent')}>Update Student</StyledButton>
-                <StyledButton level={1} onClick={() => handleViewChange('courses')}>Courses</StyledButton>
-                <StyledButton level={1} onClick={() => handleViewChange('courseEnrollment')}>Course Enrollment</StyledButton>
             </ButtonContainer>
             <ContentContainer>
                 {view === 'students' && <StudentList />}
                 {view === 'departments' && <DepartmentList />}
                 {view === 'addStudent' && <AddStudent />}
                 {view === 'updateStudent' && <UpdateStudent />}
-                {view === 'courses' && <Course />}
-                {view === 'courseEnrollment' && <CourseEnrollment />}
-
             </ContentContainer>
         </AppContainer>
     );

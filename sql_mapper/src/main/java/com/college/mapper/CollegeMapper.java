@@ -7,8 +7,6 @@ import com.college.entity.Department;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import com.college.dto.CourseDTO;
-import com.college.entity.Course;
 
 @Mapper(componentModel = "spring")
 public interface CollegeMapper {
@@ -26,9 +24,6 @@ public interface CollegeMapper {
     Student studentDTOToStudent(StudentDTO studentDTO);
 
     Department departmentDTOToDepartment(Integer departmentId);
-    
-    CourseDTO courseToCourseDTO(Course course);
-        
     
 
     

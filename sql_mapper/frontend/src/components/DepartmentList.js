@@ -1,4 +1,4 @@
-
+// src/components/DepartmentList.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -8,14 +8,6 @@ const DepartmentListContainer = styled.div`
   padding: 20px;
   border-radius: 5px;
 `;
-const DepartmentItem = styled.li`
-    padding: 10px;
-    border-bottom: 1px solid black;
-`;
-const DepartmentTitle = styled.span`
-    font-weight: bold;
-    color: #333;
-`;
 
 const DepartmentList = () => {
     const [departments, setDepartments] = useState([]);
@@ -24,6 +16,7 @@ const DepartmentList = () => {
         const fetchDepartments = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/api/college/departments');
+                console.log(response.data); // Log the data to inspect it
                 setDepartments(response.data);
             } catch (error) {
                 console.error("Error fetching department data:", error);
@@ -35,17 +28,15 @@ const DepartmentList = () => {
     return (
         <DepartmentListContainer>
             <h2>Department List</h2>
-            <DepartmentTitle >
+            <ul>
                 {departments.length > 0 ? (
                     departments.map(department => (
-                        <DepartmentItem key={department.id}>
-                            {department.departmentId} - {department.departmentName} - {department.professorName}
-                        </DepartmentItem>
+                        <li key={department.id}>{department.departmentId} - {department.departmentName}</li> // Ensure department.id is unique
                     ))
                 ) : (
-                    <DepartmentItem>No departments found.</DepartmentItem>
+                    <li>No departments found.</li>
                 )}
-            </DepartmentTitle>
+            </ul>
         </DepartmentListContainer>
     );
 };
