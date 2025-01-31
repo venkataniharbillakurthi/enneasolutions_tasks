@@ -16,12 +16,11 @@ public class CollegeApplication {
     public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") 
-                .allowedOrigins("http://localhost:3000")
-                 
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
+        registry.addMapping("/api/**")  // Restrict to API paths
+                .allowedOrigins("${app.frontend.url}")  // Use configuration property
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowCredentials(true)
-                .exposedHeaders("x-total-pages"); 
+                .exposedHeaders("x-total-pages", "x-total-count");  // Add more pagination headers
     }
     }
 }

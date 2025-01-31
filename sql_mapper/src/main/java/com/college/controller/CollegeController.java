@@ -64,6 +64,9 @@ public class CollegeController {
     @GetMapping("/enrollment/{courseName}")
     public ResponseEntity<CourseEnrollmentDTO> getCourseEnrollment(@PathVariable String courseName) {
         CourseEnrollmentDTO enrollment = collegeService.findCourseEnrollmentByCourseName(courseName);
+        if (enrollment == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(enrollment);
     }
 }

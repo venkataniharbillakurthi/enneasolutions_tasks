@@ -32,15 +32,19 @@ const StudentList = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [pageSize] = useState(10); 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const fetchStudents = async (page) => {
         try {
             const response = await axios.get(`http://localhost:8080/api/college/students?page=${page}&size=${pageSize}`);
-            console.log('Fetched students:', response.data);
+            
             setStudents(response.data);
             setTotalPages(parseInt(response.headers['x-total-pages'], 10)); 
         } catch (error) {
-            console.error('Error fetching students:', error);
+            setError('Failed to fetch students. Please try again later.');
+        } finally {
+            setLoading(false);
         }
     };
 

@@ -20,11 +20,5 @@ public class Course {
     
     private Long studentCount;
 
-    public void setStudentCount(long studentCount) {
-        this.studentCount = studentCount;
-    }
-
-    public void setId(int id) {
-        this.courseId = id;
-    }
+    
 }
