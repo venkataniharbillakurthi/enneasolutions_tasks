@@ -45,7 +45,7 @@ const CourseEnrollmentList = () => {
                 <ul>
                 {courseEnrollments.length > 0 ? (
                     courseEnrollments.map(enrollment => (
-                        <CourseEnrollmentItem key={enrollment.courseName}>
+                        <CourseEnrollmentItem key={enrollment.courseId}>
                             {enrollment.courseName} - {enrollment.studentCount} students enrolled
                         </CourseEnrollmentItem>
                     ))

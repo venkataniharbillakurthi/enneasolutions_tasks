@@ -19,6 +19,10 @@ public class Course {
     private Set<Student> students;
     
     private Long studentCount;
+ 
+    public void setStudentCount(long count) {
+     this.studentCount = count;
+    }
 
     
 }

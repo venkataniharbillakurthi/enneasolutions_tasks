@@ -17,7 +17,6 @@ public class CollegeApplication {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")  // Restrict to API paths
-                .allowedOrigins("${app.frontend.url}")  // Use configuration property
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowCredentials(true)
                 .exposedHeaders("x-total-pages", "x-total-count");  // Add more pagination headers
