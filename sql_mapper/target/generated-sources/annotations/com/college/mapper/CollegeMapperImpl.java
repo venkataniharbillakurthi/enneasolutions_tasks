@@ -10,8 +10,13 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2025-01-31T12:55:06+0530",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.14 (Oracle Corporation)"
+=======
+    date = "2025-01-29T23:11:18+0530",
+    comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 3.41.0.z20250115-2156, environment: Java 21.0.5 (Eclipse Adoptium)"
+>>>>>>> 3e3d6e3 (Updates on Sql_Mapper_Project)
 )
 @Component
 public class CollegeMapperImpl implements CollegeMapper {
@@ -25,9 +30,15 @@ public class CollegeMapperImpl implements CollegeMapper {
         StudentDTO studentDTO = new StudentDTO();
 
         studentDTO.setDepartmentId( studentDepartmentDepartmentId( student ) );
+<<<<<<< HEAD
         studentDTO.setStudentId( student.getStudentId() );
         studentDTO.setName( student.getName() );
         studentDTO.setAge( student.getAge() );
+=======
+        studentDTO.setAge( student.getAge() );
+        studentDTO.setName( student.getName() );
+        studentDTO.setStudentId( student.getStudentId() );
+>>>>>>> 3e3d6e3 (Updates on Sql_Mapper_Project)
 
         return studentDTO;
     }
@@ -56,8 +67,13 @@ public class CollegeMapperImpl implements CollegeMapper {
         Student student = new Student();
 
         student.setDepartment( studentDTOToDepartment( studentDTO ) );
+<<<<<<< HEAD
         student.setName( studentDTO.getName() );
         student.setAge( studentDTO.getAge() );
+=======
+        student.setAge( studentDTO.getAge() );
+        student.setName( studentDTO.getName() );
+>>>>>>> 3e3d6e3 (Updates on Sql_Mapper_Project)
 
         return student;
     }
