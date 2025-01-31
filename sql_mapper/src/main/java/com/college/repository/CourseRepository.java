@@ -21,4 +21,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer>{
            "FROM Student s JOIN s.courses c " +
            "WHERE c.courseName = :courseName GROUP BY c.courseName")
     CourseEnrollmentDTO findCourseEnrollmentByCourseName(@Param("courseName") String courseName);
+
+    boolean existsByCourseName(String courseName);
+    Course findCourseByCourseName(String courseName);
 }

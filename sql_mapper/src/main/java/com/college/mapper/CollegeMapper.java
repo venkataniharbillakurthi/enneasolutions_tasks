@@ -25,6 +25,7 @@ public interface CollegeMapper {
     @Mapping(source = "departmentId", target = "department.departmentId")
     Student studentDTOToStudent(StudentDTO studentDTO);
 
+    
     Department departmentDTOToDepartment(Integer departmentId);
     
     CourseDTO courseToCourseDTO(Course course);

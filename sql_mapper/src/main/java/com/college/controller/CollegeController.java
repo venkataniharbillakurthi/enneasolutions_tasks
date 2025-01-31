@@ -66,6 +66,13 @@ public class CollegeController {
         CourseEnrollmentDTO enrollment = collegeService.findCourseEnrollmentByCourseName(courseName);
         return ResponseEntity.ok(enrollment);
     }
+
+    @DeleteMapping("/RemoveCourse/{courseName}")
+    public ResponseEntity<String> deleteCourseEnrollment(@PathVariable String courseName) {
+        collegeService.deleteCourse(courseName);
+        return ResponseEntity.ok("Course enrollment deleted successfully");
+    }
+    
 }
 
     

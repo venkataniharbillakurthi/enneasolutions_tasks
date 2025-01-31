@@ -70,9 +70,9 @@ const App = () => {
         <AppContainer>
             <ButtonContainer>
                 <AppHeader>Ennea College</AppHeader>
-                <StyledButton level={4} onClick={() => handleViewChange('students')}>Students</StyledButton>
-                <StyledButton level={3} onClick={() => handleViewChange('departments')}>Departments</StyledButton>
-                <StyledButton level={2} onClick={() => handleViewChange('addStudent')}>Add Student</StyledButton>
+                <StyledButton level={1} onClick={() => handleViewChange('students')}>Students</StyledButton>
+                <StyledButton level={1} onClick={() => handleViewChange('departments')}>Departments</StyledButton>
+                <StyledButton level={1} onClick={() => handleViewChange('addStudent')}>Add Student</StyledButton>
                 <StyledButton level={1} onClick={() => handleViewChange('updateStudent')}>Update Student</StyledButton>
                 <StyledButton level={1} onClick={() => handleViewChange('courses')}>Courses</StyledButton>
                 <StyledButton level={1} onClick={() => handleViewChange('courseEnrollment')}>Course Enrollment</StyledButton>

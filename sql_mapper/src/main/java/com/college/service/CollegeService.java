@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -114,4 +115,28 @@ public class CollegeService {
             courseRepository.save(courseToSave);
         }
     }
+    
+    public void deleteCourse(String courseName) {
+        Course course = courseRepository.findCourseByCourseName(courseName);
+        if (course == null) {
+            throw new RuntimeException("Course not found: " + courseName);
+        }
+    
+        // Remove all student references from the course
+        Set<Student> students = course.getStudents();
+        for (Student student : students) {
+            student.getCourses().remove(course);
+            studentRepository.save(student); // Save updated student
+        }
+    
+        // Clear the students list from the course
+        course.getStudents().clear();
+        course.setStudentCount(0L); // Reset student count
+        courseRepository.save(course); // Save updated course
+    
+        log.info("All students removed from the course: {}", courseName);
+    }
+    
+   
+    
 }

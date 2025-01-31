@@ -7,12 +7,14 @@ import com.college.entity.Course;
 import com.college.entity.Department;
 import com.college.entity.Professor;
 import com.college.entity.Student;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-31T17:53:56+0530",
+    date = "2025-01-31T22:31:23+0530",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 3.41.0.z20250115-2156, environment: Java 21.0.5 (Eclipse Adoptium)"
 )
 @Component
@@ -28,6 +30,10 @@ public class CollegeMapperImpl implements CollegeMapper {
 
         studentDTO.setDepartmentId( studentDepartmentDepartmentId( student ) );
         studentDTO.setAge( student.getAge() );
+        Set<Course> set = student.getCourses();
+        if ( set != null ) {
+            studentDTO.setCourses( new LinkedHashSet<Course>( set ) );
+        }
         studentDTO.setName( student.getName() );
         studentDTO.setStudentId( student.getStudentId() );
 
