@@ -8,6 +8,9 @@ import com.college.dto.CourseDTO;
 import com.college.dto.CourseEnrollmentDTO;
 import com.college.mapper.CollegeMapper;
 import com.college.repository.StudentRepository;
+
+import jakarta.transaction.Transactional;
+
 import com.college.repository.DepartmentRepository;
 import com.college.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -93,6 +96,7 @@ public class CollegeService {
         return courseRepository.findCourseEnrollmentByCourseName(courseName);
     }
     
+    @Transactional
     public void enrollStudentInCourse(String courseName) {
         Course course = courseRepository.findCourseByCourseName(courseName);
         if (course == null) {
@@ -102,6 +106,7 @@ public class CollegeService {
         courseRepository.save(course);
     }
     
+    @Transactional
     public void deleteCourse(String courseName) {
         Course course = courseRepository.findCourseByCourseName(courseName);
         if (course == null) {
