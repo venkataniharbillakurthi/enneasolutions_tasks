@@ -1,12 +1,15 @@
 package com.college.service;
 
 import com.college.dto.StudentDTO;
+import com.college.entity.Student;
 import com.college.dto.DepartmentDTO;
 import com.college.mapper.CollegeMapper;
 import com.college.repository.StudentRepository;
 import com.college.repository.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +18,13 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class CollegeService {
-    private final StudentRepository studentRepository;
-    private final DepartmentRepository departmentRepository;
-    private final CollegeMapper collegeMapper;
+	
+	@Autowired
+    private  StudentRepository studentRepository;
+	@Autowired
+    private  DepartmentRepository departmentRepository;
+	@Autowired
+    private  CollegeMapper collegeMapper;
     
     public List<StudentDTO> getAllStudentsWithDepartments() {
         log.debug("Fetching all students with their departments");
@@ -46,6 +53,13 @@ public class CollegeService {
     public Object addStudent(StudentDTO studentDTO) {
         return studentRepository.save(collegeMapper.studentDTOToStudent(studentDTO));
     }
-
-   
+    
+    public void updateStudent(Integer studentId, StudentDTO studentDTO) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+        student.setName(studentDTO.getName());
+        student.setAge(studentDTO.getAge());
+        student.setDepartment(collegeMapper.departmentDTOToDepartment(studentDTO.getDepartmentId()));
+        studentRepository.save(student);
+    }
 }
