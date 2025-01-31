@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-31T22:31:23+0530",
+    date = "2025-01-31T22:57:01+0530",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 3.41.0.z20250115-2156, environment: Java 21.0.5 (Eclipse Adoptium)"
 )
 @Component
@@ -30,10 +30,7 @@ public class CollegeMapperImpl implements CollegeMapper {
 
         studentDTO.setDepartmentId( studentDepartmentDepartmentId( student ) );
         studentDTO.setAge( student.getAge() );
-        Set<Course> set = student.getCourses();
-        if ( set != null ) {
-            studentDTO.setCourses( new LinkedHashSet<Course>( set ) );
-        }
+        studentDTO.setCourses( courseSetToCourseDTOSet( student.getCourses() ) );
         studentDTO.setName( student.getName() );
         studentDTO.setStudentId( student.getStudentId() );
 
@@ -115,6 +112,19 @@ public class CollegeMapperImpl implements CollegeMapper {
             return null;
         }
         return departmentId;
+    }
+
+    protected Set<CourseDTO> courseSetToCourseDTOSet(Set<Course> set) {
+        if ( set == null ) {
+            return null;
+        }
+
+        Set<CourseDTO> set1 = new LinkedHashSet<CourseDTO>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
+        for ( Course course : set ) {
+            set1.add( courseToCourseDTO( course ) );
+        }
+
+        return set1;
     }
 
     private String departmentProfessorName(Department department) {

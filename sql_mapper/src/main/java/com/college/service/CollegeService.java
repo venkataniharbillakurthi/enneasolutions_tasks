@@ -20,13 +20,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Service class for college operations.
- */
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -38,13 +36,7 @@ public class CollegeService {
     private static final Logger logger = LoggerFactory.getLogger(CollegeService.class);
     
     
-    private Course mapToCourse(CourseEnrollmentDTO enrollmentDTO) {
-        Course course = new Course();
-        
-        course.setCourseName(enrollmentDTO.getCourseName()); 
-        course.setStudentCount(enrollmentDTO.getStudentCount()); 
-        return course;
-    }
+    
     
     public List<StudentDTO> getAllStudentsWithDepartments(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
@@ -85,11 +77,7 @@ public class CollegeService {
     
     public List<CourseDTO> getCourseDetails() {
         log.debug("Fetching all course details");
-        List<Course> courseList = new ArrayList<>();
-        for (Course course : courseRepository.findAll()) {
-            courseList.add(course);
-        }
-        return courseList.stream()
+        return courseRepository.findAll().stream()
                 .map(collegeMapper::courseToCourseDTO)
                 .collect(Collectors.toList());
     }
@@ -106,14 +94,12 @@ public class CollegeService {
     }
     
     public void enrollStudentInCourse(String courseName) {
-        CourseEnrollmentDTO enrollmentDTO = findCourseEnrollmentByCourseName(courseName);
-        if (enrollmentDTO != null) {
-            enrollmentDTO.setStudentCount(enrollmentDTO.getStudentCount() + 1);
-            
-            Course courseToSave = mapToCourse(enrollmentDTO);
-            
-            courseRepository.save(courseToSave);
+        Course course = courseRepository.findCourseByCourseName(courseName);
+        if (course == null) {
+            throw new RuntimeException("Course not found: " + courseName);
         }
+        course.setStudentCount(course.getStudentCount() + 1);
+        courseRepository.save(course);
     }
     
     public void deleteCourse(String courseName) {
@@ -122,17 +108,16 @@ public class CollegeService {
             throw new RuntimeException("Course not found: " + courseName);
         }
     
-        // Remove all student references from the course
         Set<Student> students = course.getStudents();
         for (Student student : students) {
             student.getCourses().remove(course);
-            studentRepository.save(student); // Save updated student
+            studentRepository.save(student); 
         }
     
-        // Clear the students list from the course
+
         course.getStudents().clear();
-        course.setStudentCount(0L); // Reset student count
-        courseRepository.save(course); // Save updated course
+        course.setStudentCount(0L); 
+        courseRepository.save(course);
     
         log.info("All students removed from the course: {}", courseName);
     }

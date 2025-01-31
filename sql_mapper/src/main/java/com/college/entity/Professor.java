@@ -16,7 +16,7 @@ public class Professor {
     
     private String name;
     
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "departmentId" )
     private Department department;
     

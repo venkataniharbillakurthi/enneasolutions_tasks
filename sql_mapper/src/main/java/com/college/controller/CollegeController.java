@@ -23,11 +23,12 @@ public class CollegeController {
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int size) {
     List<StudentDTO> students = collegeService.getAllStudentsWithDepartments(page, size);
-    long totalStudents = studentRepository.count(); // Get total number of students
-    long totalPages = (totalStudents + size - 1) / size; // Calculate total pages
+    long totalStudents = studentRepository.count(); 
+    long totalPages = (totalStudents + size - 1) / size; 
 
     return ResponseEntity.ok()
-            .header("x-total-pages", String.valueOf(totalPages)) // Set the total pages header
+            .header("x-total-pages", String.valueOf(totalPages)) 
+            .header("x-total-count", String.valueOf(totalStudents))
             .body(students);
 }
     
@@ -67,7 +68,7 @@ public class CollegeController {
         return ResponseEntity.ok(enrollment);
     }
 
-    @DeleteMapping("/RemoveCourse/{courseName}")
+    @DeleteMapping("/courses/{courseName}")
     public ResponseEntity<String> deleteCourseEnrollment(@PathVariable String courseName) {
         collegeService.deleteCourse(courseName);
         return ResponseEntity.ok("Course enrollment deleted successfully");
