@@ -1,0 +1,256 @@
+{
+  "courses": [
+    {
+      "title": "Java Full Stack Development",
+      "instructor": "John ",
+      "description": "Learn backend and frontend development using Java, Spring Boot, and React.",
+      "image": "https://img.freepik.com/free-photo/programming-background-collage_23-2149901770.jpg?ga=GA1.1.500716520.1737194945&semt=ais_hybrid_sidr",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "title": "Python for Data Science",
+      "description": "Master Python and its libraries for data science and machine learning.",
+      "image": "https://img.freepik.com/free-photo/businesspeople-working-finance-accounting-analyze-financial-graph-budget-planning-future-office-room_74952-1396.jpg?ga=GA1.1.500716520.1737194945&semt=ais_hybrid_sidr",
+      "instructor": "Jane Smith"
+    },
+    {
+      "id": "3",
+      "title": "Web Development with React",
+      "description": "Build modern web applications using React and state management techniques.",
+      "image": "https://qualitythought.in/wp-content/uploads/2024/08/the_future_of_web_development_reactjs.webp",
+      "instructor": "Emily Johnson"
+    },
+    {
+      "id": "4",
+      "title": "Spring Boot and Microservices",
+      "description": "Develop scalable and efficient microservices using Spring Boot and Kubernetes.",
+      "image": "https://javatechie.ongraphy.com/s/store/courses/62c3e1f20cf25d97f28f9fa8/cover.jpg?v=5",
+      "instructor": "Michael Brown"
+    },
+    {
+      "id": "5",
+      "title": "Machine Learning with Python",
+      "description": "Explore supervised and unsupervised learning with real-world datasets.",
+      "image": "https://pyimagesearch.com/wp-content/uploads/2019/01/python_ml_header.png",
+      "instructor": "David Wilson"
+    },
+    {
+      "id": "6",
+      "title": "Node.js and Express.js",
+      "description": "Learn backend development using Node.js, Express, and MongoDB.",
+      "image": "https://i.ytimg.com/vi/Oe421EPjeBE/maxresdefault.jpg",
+      "instructor": "Sophia Martinez"
+    },
+    {
+      "id": "7",
+      "title": "Angular for Beginners",
+      "description": "Understand the fundamentals of Angular and build dynamic web applications.",
+      "image": "https://therichpost.com/wp-content/uploads/2021/01/Angular-Learning.jpeg",
+      "instructor": "William Anderson"
+    },
+    {
+      "id": "8",
+      "title": "DevOps with AWS",
+      "description": "Implement CI/CD pipelines, containerization, and automation using AWS DevOps tools.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQhdjjl5_D90BgVIEQXeU24pHfarJCjyxsaQ&s",
+      "instructor": "Olivia Thomas"
+    },
+    {
+      "id": "9",
+      "title": "Android App Development with Kotlin",
+      "description": "Create Android applications using Kotlin and Jetpack components.",
+      "image": "https://programmers.io/wp-content/uploads/2021/05/Kotlin-application-development.jpg",
+      "instructor": "James White"
+    },
+    {
+      "id": "10",
+      "title": "iOS Development with Swift",
+      "description": "Develop iOS applications using Swift and SwiftUI framework.",
+      "image": "https://media.licdn.com/dms/image/v2/D5612AQHuTHgmyBXEcA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1732699418267?e=2147483647&v=beta&t=qllaerj6_6BcCrvUCe07kDCj2m5B3mdJlCxP8gnFV-E",
+      "instructor": "Charlotte Lewis"
+    },
+    {
+      "id": "11",
+      "title": "C++ for Competitive Programming",
+      "description": "Enhance problem-solving skills with C++ and data structures.",
+      "image": "https://miro.medium.com/v2/resize:fit:1400/1*_7ABKnD0Zhb0XLcA85K7jA.jpeg",
+      "instructor": "Daniel Harris"
+    },
+    {
+      "id": "12",
+      "title": "Cybersecurity Fundamentals",
+      "description": "Understand network security, encryption, and ethical hacking basics.",
+      "image": "https://media.licdn.com/dms/image/v2/D5612AQHbfgoT1MOYgg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1682706007923?e=2147483647&v=beta&t=p43tXjBQiy50RpRCKfUm7ERwq1FU100B76N2GjMWoA8",
+      "instructor": "Ethan Hall"
+    },
+    {
+      "id": "13",
+      "title": "SQL and Database Management",
+      "description": "Learn SQL, relational database design, and database optimization techniques.",
+      "image": "https://optim.tildacdn.one/tild6262-6661-4034-b164-383063636462/-/resize/824x/-/format/webp/What_is_SQL_Database.png",
+      "instructor": "Mia Clark"
+    },
+    {
+      "id": "14",
+      "title": "Data Structures and Algorithms",
+      "description": "Master essential data structures and algorithms for coding interviews.",
+      "image": "https://media.licdn.com/dms/image/v2/D5612AQFI9wRTdTCs4w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721172771595?e=2147483647&v=beta&t=kXl3fVZs1cbTJKTh7wfbo7avYg2eift-rgP509aVZ4o",
+      "instructor": "Benjamin Adams"
+    },
+    {
+      "id": "15",
+      "title": "Artificial Intelligence with Python",
+      "description": "Develop AI-powered applications using TensorFlow and PyTorch.",
+      "image": "https://media.geeksforgeeks.org/wp-content/uploads/20240123150734/Python-AI--(1).webp",
+      "instructor": "Harper Walker"
+    },
+    {
+      "id": "16",
+      "title": "Blockchain Development",
+      "description": "Learn how to build decentralized applications using Ethereum and Solidity.",
+      "image": "https://www.mindinventory.com/blog/wp-content/uploads/2023/06/blockchain-trends.webp",
+      "instructor": "Samuel King"
+    },
+    {
+      "id": "17",
+      "title": "Flutter Mobile App Development",
+      "description": "Create cross-platform mobile apps using Flutter and Dart.",
+      "image": "https://www.softwebsolutions.com/wp-content/uploads/2020/09/Flutter-App-development.jpg",
+      "instructor": "Ella Scott"
+    },
+    {
+      "id": "18",
+      "title": "Golang for Backend Development",
+      "description": "Develop high-performance backend applications using Golang.",
+      "image": "https://www.softwebsolutions.com/wp-content/uploads/2021/01/Blog_Go-is-ideal-for-server-side-apps.jpg",
+      "instructor": "Henry Green"
+    },
+    {
+      "id": "19",
+      "title": "Cloud Computing with Azure",
+      "description": "Learn Azure cloud services, storage, and serverless computing.",
+      "image": "https://cdn.educba.com/academy/wp-content/uploads/2019/12/azure-services.jpg",
+      "instructor": "Liam Baker"
+    },
+    {
+      "id": "20",
+      "title": "Rust Programming for System Development",
+      "description": "Explore Rust programming for high-performance system development.",
+      "image": "https://i0.wp.com/blog.nashtechglobal.com/wp-content/uploads/2024/10/DALL%C2%B7E-2024-10-24-15.04.15-A-visually-appealing-graphic-with-the-text-System-Programming-in-Rust.-The-background-has-a-sleek-futuristic-design-with-elements-of-hardware-like-.webp?resize=1024%2C1024&ssl=1",
+      "instructor": "Ava Mitchell"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "3a5d",
+      "name": "Venkata Nihar Billakurthi",
+      "email": "venkataniharbillakurthi@gmail.com",
+      "phone": "08328657726",
+      "message": "hai"
+    },
+    {
+      "id": "c96e",
+      "name": "Venkata Nihar Billakurthi",
+      "email": "venkataniharbillakurthi@gmail.com",
+      "phone": "08328657726",
+      "message": "sdf"
+    },
+    {
+      "id": "7301",
+      "name": "Venkata Nihar Billakurthi",
+      "email": "venkataniharbillakurthi@gmail.com",
+      "phone": "08328657726",
+      "message": "asd"
+    },
+    {
+      "id": "dfdb",
+      "name": "Venkata Nihar Billakurthi",
+      "email": "venkataniharbillakurthi@gmail.com",
+      "phone": "08328657726",
+      "message": "asd"
+    },
+    {
+      "id": "9d2d",
+      "name": "Venkata Nihar Billakurthi",
+      "email": "venkataniharbillakurthi@gmail.com",
+      "phone": "08328657726",
+      "message": "asdfg"
+    },
+    {
+      "id": "1c26",
+      "name": "venkta",
+      "email": "venkata@gmail.com",
+      "phone": "98765432456",
+      "message": "qwertyui"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "e_1739190242899",
+      "userId": "nihar@gmail.com",
+      "courseId": "4",
+      "courseName": "Spring Boot and Microservices",
+      "enrollmentDate": "2025-02-10",
+      "status": "active",
+      "studentName": "nihar",
+      "studentEmail": "nihar@gmail.com",
+      "studentPhone": "08328657726"
+    },
+    {
+      "id": "e_1739259653949",
+      "userId": "ram@example.com",
+      "courseId": "8",
+      "courseName": "DevOps with AWS",
+      "enrollmentDate": "2025-02-11",
+      "status": "active",
+      "studentName": "ram",
+      "studentEmail": "ram@example.com",
+      "studentPhone": "08328657726"
+    },
+    {
+      "id": "e_1739278892190",
+      "userId": "venkata@gmail.com",
+      "courseId": "20",
+      "courseName": "Rust Programming for System Development",
+      "enrollmentDate": "2025-02-11",
+      "status": "active",
+      "studentName": "venkata",
+      "studentEmail": "venkata@gmail.com",
+      "studentPhone": "08328657726"
+    },
+    {
+      "id": "e_1739278936492",
+      "userId": "user@example.com",
+      "courseId": "9",
+      "courseName": "Android App Development with Kotlin",
+      "enrollmentDate": "2025-02-11",
+      "status": "active",
+      "studentName": "user",
+      "studentEmail": "user@example.com",
+      "studentPhone": "08328657726"
+    },
+    {
+      "id": "e_1739362823227",
+      "userId": "venkataniharbillakurthi@gmail.com",
+      "courseId": "12",
+      "courseName": "Cybersecurity Fundamentals",
+      "enrollmentDate": "2025-02-12",
+      "status": "active",
+      "studentName": "Venkata Nihar Nihar Billakurthi",
+      "studentEmail": "venkataniharbillakurthi@gmail.com",
+      "studentPhone": "08328657726"
+    },
+    {
+      "id": "e_1739362865008",
+      "userId": "venkataniharbillakurthi@gmail.com",
+      "courseId": "16",
+      "courseName": "Blockchain Development",
+      "enrollmentDate": "2025-02-12",
+      "status": "active",
+      "studentName": "Venkata Nihar Billakurthi",
+      "studentEmail": "venkataniharbillakurthi@gmail.com",
+      "studentPhone": "08328657726"
+    }
+  ]
+}
