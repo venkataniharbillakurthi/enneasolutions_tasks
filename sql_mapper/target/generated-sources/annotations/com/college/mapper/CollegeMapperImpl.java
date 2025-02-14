@@ -1,17 +1,21 @@
 package com.college.mapper;
 
+import com.college.dto.CourseDTO;
 import com.college.dto.DepartmentDTO;
 import com.college.dto.StudentDTO;
+import com.college.entity.Course;
 import com.college.entity.Department;
 import com.college.entity.Professor;
 import com.college.entity.Student;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-01-31T12:55:06+0530",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.14 (Oracle Corporation)"
+    date = "2025-01-31T22:57:01+0530",
+    comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 3.41.0.z20250115-2156, environment: Java 21.0.5 (Eclipse Adoptium)"
 )
 @Component
 public class CollegeMapperImpl implements CollegeMapper {
@@ -25,9 +29,10 @@ public class CollegeMapperImpl implements CollegeMapper {
         StudentDTO studentDTO = new StudentDTO();
 
         studentDTO.setDepartmentId( studentDepartmentDepartmentId( student ) );
-        studentDTO.setStudentId( student.getStudentId() );
-        studentDTO.setName( student.getName() );
         studentDTO.setAge( student.getAge() );
+        studentDTO.setCourses( courseSetToCourseDTOSet( student.getCourses() ) );
+        studentDTO.setName( student.getName() );
+        studentDTO.setStudentId( student.getStudentId() );
 
         return studentDTO;
     }
@@ -56,8 +61,8 @@ public class CollegeMapperImpl implements CollegeMapper {
         Student student = new Student();
 
         student.setDepartment( studentDTOToDepartment( studentDTO ) );
-        student.setName( studentDTO.getName() );
         student.setAge( studentDTO.getAge() );
+        student.setName( studentDTO.getName() );
 
         return student;
     }
@@ -75,6 +80,25 @@ public class CollegeMapperImpl implements CollegeMapper {
         return department;
     }
 
+    @Override
+    public CourseDTO courseToCourseDTO(Course course) {
+        if ( course == null ) {
+            return null;
+        }
+
+        CourseDTO courseDTO = new CourseDTO();
+
+        if ( course.getCourseId() != null ) {
+            courseDTO.setCourseId( course.getCourseId().longValue() );
+        }
+        courseDTO.setCourseName( course.getCourseName() );
+        if ( course.getCredits() != null ) {
+            courseDTO.setCredits( String.valueOf( course.getCredits() ) );
+        }
+
+        return courseDTO;
+    }
+
     private Integer studentDepartmentDepartmentId(Student student) {
         if ( student == null ) {
             return null;
@@ -88,6 +112,19 @@ public class CollegeMapperImpl implements CollegeMapper {
             return null;
         }
         return departmentId;
+    }
+
+    protected Set<CourseDTO> courseSetToCourseDTOSet(Set<Course> set) {
+        if ( set == null ) {
+            return null;
+        }
+
+        Set<CourseDTO> set1 = new LinkedHashSet<CourseDTO>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
+        for ( Course course : set ) {
+            set1.add( courseToCourseDTO( course ) );
+        }
+
+        return set1;
     }
 
     private String departmentProfessorName(Department department) {

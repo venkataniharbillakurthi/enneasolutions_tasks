@@ -1,12 +1,15 @@
 package com.college.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import jakarta.persistence.*;
 import java.util.Set;
+
 
 @Data
 @Entity
 @Table(name = "courses")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,5 +20,12 @@ public class Course {
     
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students;
+    
+    private Long studentCount;
+ 
+    public void setStudentCount(long count) {
+     this.studentCount = count;
+    }
+
     
 }
